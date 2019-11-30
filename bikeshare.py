@@ -8,9 +8,15 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 cities=['chicago','washington', 'new york city']
 months=['january','february','march','april','may', 'june','all']
+<<<<<<< HEAD
   
 days=['sunday','monday','tuesday','wednesday','thursday','friday','saturday','all']
     
+=======
+
+days=['sunday','monday','tuesday','wednesday','thursday','friday','saturday','all']
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
 
 def get_filters():
     """
@@ -23,9 +29,15 @@ def get_filters():
     """
     cities=['chicago','washington', 'new york city']
     months=['january','february','march','april','may', 'june','all']
+<<<<<<< HEAD
   
     days=['sunday','monday','tuesday','wednesday','thursday','friday','saturday','all']
     
+=======
+
+    days=['sunday','monday','tuesday','wednesday','thursday','friday','saturday','all']
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True :
@@ -35,6 +47,7 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
 
+<<<<<<< HEAD
    
     month=input("enter a month : ").strip().lower()
         
@@ -44,6 +57,17 @@ def get_filters():
     day=input("enter a day or \"all\"to say all days data : ").strip().lower()
         
     print('-'*40)  
+=======
+
+    month=input("enter a month : ").strip().lower()
+
+
+    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
+
+    day=input("enter a day or \"all\"to say all days data : ").strip().lower()
+
+    print('-'*40)
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
     return city, month, day
 
 
@@ -69,18 +93,28 @@ def load_data(city, month, day):
 
     df['End Time'] = pd.to_datetime(df['End Time'])
 
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
    #extract day and month into separate column
 
     df['day_of_week'] = pd.to_datetime(df['Start Time']).dt.weekday_name
     df['month'] = pd.to_datetime(df['Start Time']).dt.month
 
+<<<<<<< HEAD
                                 
                                 
+=======
+
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
    #filter by month
     if month!='all':
         month=months.index(month)+1
         df=df[df['month'] == month]
+<<<<<<< HEAD
     
                                 
    #filter by day
@@ -90,11 +124,23 @@ def load_data(city, month, day):
     return df
    
             
+=======
+
+
+   #filter by day
+    if day!='all':
+        df=df[df['day_of_week'] == day.title()]
+
+    return df
+
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
+<<<<<<< HEAD
     
     # TO DO: display the most common month  
     df['month']=df['Start Time'].dt.month
@@ -102,6 +148,15 @@ def time_stats(df):
     print("most common month is:\n{} \n".format(most_common_month))
    
    
+=======
+
+    # TO DO: display the most common month
+    df['month']=df['Start Time'].dt.month
+    most_common_month = df['month'].mode()[0]
+    print("most common month is:\n{} \n".format(most_common_month))
+
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
 
 
     # TO DO: display the most common day of week #df['day']=df['Start Time']
@@ -114,7 +169,11 @@ def time_stats(df):
     popular_hour=df['hour'].mode()[0]
     print("most common start hour is:\n{} \n".format(popular_hour))
 
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -127,11 +186,19 @@ def station_stats(df):
 
     # TO DO: display most commonly used start station
     common_start_station=df['Start Station'].mode()[0]
+<<<<<<< HEAD
     
     print("the most commonly used start station is :",common_start_station)
 
     # TO DO: display most commonly used end station
     
+=======
+
+    print("the most commonly used start station is :",common_start_station)
+
+    # TO DO: display most commonly used end station
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
     common_end_station=df['End Station'].mode()[0]
     print("the most commonly used end station is :",common_end_station)
 
@@ -150,7 +217,11 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
     # TO DO: display total travel time
     total=df['Trip Duration'].sum()
 
@@ -178,10 +249,17 @@ def user_stats(df):
     if 'Birth Year' in df.columns :
         earliest=df['Birth Year'].min()
         print("the earliest year of birth is :",earliest)
+<<<<<<< HEAD
         
         recent=df['Birth Year'].max()
         print("the most recent year of birth is :",recent)
           
+=======
+
+        recent=df['Birth Year'].max()
+        print("the most recent year of birth is :",recent)
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
         common_year=df['Birth Year'].mode()[0]
         print("the most cpommon  year of birth is :",common_year)
 
@@ -191,21 +269,38 @@ def user_stats(df):
 
 def main():
     while True:
+<<<<<<< HEAD
         
         city, month, day = get_filters()
         df = load_data(city, month ,day) 
         
         
               
+=======
+
+        city, month, day = get_filters()
+        df = load_data(city, month ,day)
+
+
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
         want_raw_data= input("would you like see raw data?").strip().lower()
         start=0
         end=5
         while(want_raw_data=="yes"):
+<<<<<<< HEAD
             print(df.iloc[start:end]) 
             start+=5
             end +=5
             want_raw_data=input("would you like see more of raw data?").strip().lower()
         
+=======
+            print(df.iloc[start:end])
+            start+=5
+            end +=5
+            want_raw_data=input("would you like see more of raw data?").strip().lower()
+
+>>>>>>> b001de863adb9bb4496249306951b30fa2327f44
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
